@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: django-web
+    env: docker
+    plan: free
+    branch: master
+    repo: https://github.com/rayala83/proyecto_de_Django
+    rootDir: myprojectinicial
+    dockerfilePath: Dockerfile
+    buildCommand: ""
+    startCommand: "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: your-service-name.onrender.com
+      - key: DATABASE_NAME
+        value: mistareas
+      - key: DATABASE_USER
+        value: miusuario
+      - key: DATABASE_PASSWORD
+        value: claveusuario
+      - key: DATABASE_HOST
+        value: your-db-hostname
+      - key: DATABASE_PORT
+        value: 5432
